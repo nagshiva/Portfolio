@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Download } from "lucide-react";
 
 const Home = () => {
   return (
@@ -23,7 +23,7 @@ const Home = () => {
             Specialized in React, Node.js, and modern web technologies.
           </p>
           <a
-            href="/resume.pdf"
+            href="/assets/resume.pdf"
             download
             className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
