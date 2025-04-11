@@ -7,6 +7,7 @@ import Achievements from './sections/Achievements';
 import Contact from './sections/Contact';
 import Footer from './components/Footer';
 
+
 function App() {
   return (
     <div className="bg-gray-900 text-white">

@@ -27,7 +27,7 @@ const Home = () => {
               investments.
             </p>
             <motion.a
-              href="/assets/resume.pdf"
+              href="resume.pdf"
               download
               className="inline-flex items-center px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
               whileHover={{ scale: 1.05 }}
@@ -47,7 +47,7 @@ const Home = () => {
           >
             <div className="w-64 h-64 md:w-80 md:h-80 mx-auto rounded-full overflow-hidden border-4 border-blue-500">
               <img
-                src="/assets/portfolio_pic.jpg"
+                src="portfolio_pic.jpg"
                 alt="Profile"
                 className="w-full h-full object-cover"
               />

@@ -8,18 +8,21 @@ const Portfolio = () => {
       degree: "B-Tech of Computer Science & Engineering",
       institution: "KL University, Vijayawada",
       year: "",
+      percentage: "9.4 CGPA",
       description: "Specializing in Data Science & Big data analytics",
     },
     {
       degree: "Diploma of Mechanical Engineering",
       institution: "Andhra polytechnic, Kakinada",
       year: "",
+      percentage: "80%",
       description: "Core Mechanical",
     },
     {
       degree: "Secondary School Certificate",
       institution: "Sreeniketan E.M. High School",
       year: "",
+      percentage: "9.0 CGPA",
       description: "",
     },
   ];
@@ -49,15 +52,23 @@ const Portfolio = () => {
         "Developed a Learning Management System with React and Node.js for online courses and user management.",
       techStack: ["React", "Node.js", "MongoDB"],
       github: "https://github.com/nagshiva/Learning-Management-System",
-      demo: "",
+      //demo: "",
     },
     {
       title: "Loan Tracking System",
       description:
         "Developed a Loan Track System using SpringBoot Java for managing and tracking loans efficiently.",
-      techStack: ["SpringBoot","MySQL"],
+      techStack: ["SpringBoot", "MySQL"],
       github: "https://github.com/nagshiva/Loan-Tracker",
-      demo: "",
+      //demo: "",
+    },
+    {
+      title: "Personal Portfolio",
+      description:
+        "A responsive and modern web app to showcase my journey, skills, projects, and achievements.",
+      techStack: ["Frontend: React+vite", "Typescript", "Tailwind CSS"],
+      github: "https://github.com/nagshiva/Portfolio",
+      //demo: "",
     },
   ];
 
@@ -112,6 +123,7 @@ const Portfolio = () => {
                 <h4 className="text-lg font-semibold">{item.degree}</h4>
                 <p className="text-gray-400">{item.institution}</p>
                 <p className="text-sm text-gray-500">{item.year}</p>
+                <p className="text-sm text-gray-500">{item.percentage}</p>
                 <p className="text-gray-400 mt-2">{item.description}</p>
               </div>
             ))}
@@ -173,14 +185,14 @@ const Portfolio = () => {
                   >
                     GitHub
                   </a>
-                  <a
+                  {/* <a
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:text-blue-300"
                   >
                     Live Demo
-                  </a>
+                  </a> */}
                 </div>
               </div>
             ))}

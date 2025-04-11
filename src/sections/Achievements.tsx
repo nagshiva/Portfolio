@@ -4,20 +4,21 @@ import { motion } from 'framer-motion';
 const Achievements = () => {
   const achievements = [
     {
-      title: 'Best Project Award',
-      image: 'https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=300&h=200&fit=crop',
-      description: 'Awarded for outstanding contribution to open source'
+      title: 'From Tools to Tech – My Journey.',
+      image: 'Designer.jpeg',
+      description: 'Transitioned from a Diploma in Mechanical Engineering to B.Tech in Computer Science Engineering, combining hands-on technical experience with a passion for coding and technology to build innovative solutions for real-world challenges.'
     },
     {
-      title: 'Tech Conference Speaker',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=300&h=200&fit=crop',
-      description: 'Presented at major tech conferences'
+      title: 'Investing with Insight, Learning with Passion.',
+      image: 'market.jpeg',
+      description: 'A passionate investment enthusiast with 2 years of hands-on experience in the stock market. Skilled in equity investments, market analysis, and spotting investment opportunities. Continuously learning and evolving with market trends to build long-term financial growth strategies.'
     },
     {
-      title: 'Innovation Award',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=300&h=200&fit=crop',
-      description: 'Recognized for innovative solutions in tech'
-    }
+      title: 'Merit Recognized, Future Unlocked.',
+      image: 'merit.jpeg',
+      description: 'Awarded a 40% merit-based scholarship from KL University for securing 80% in Diploma academics, recognizing consistent academic performance and dedication to learning.'
+    },
+    
   ];
 
   return (
@@ -30,11 +31,12 @@ const Achievements = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Achievements</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Journey & Achievements</h2>
           <p className="text-gray-400">Highlighting key milestones and recognition</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols- lg:grid-cols-3 gap-6">
+            
           {achievements.map((achievement, index) => (
             <motion.div
               key={achievement.title}

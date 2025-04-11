@@ -8,6 +8,8 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/nagshiva", label: "GitHub" },
@@ -20,19 +22,34 @@ const Contact = () => {
     { icon: Mail, href: "mailto:nagasivaklu@gmail.com", label: "Email" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("https://formspree.io/f/maneaggl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSuccessMessage("Thank you! Your message has been sent.");
+        setErrorMessage("");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setErrorMessage("Something went wrong. Please try again.");
+        setSuccessMessage("");
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred. Please try again.");
+      setSuccessMessage("");
+    }
   };
 
   return (
@@ -46,9 +63,7 @@ const Contact = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
-          <p className="text-gray-400">
-            Let's connect and discuss opportunities
-          </p>
+          <p className="text-gray-400">Let's connect and discuss opportunities</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -61,56 +76,51 @@ const Contact = () => {
             <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-400 mb-1"
-                >
+                <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-1">
                   Name
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   required
+                  placeholder="Your Name"
+                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-400 mb-1"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-1">
                   Email
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   required
+                  placeholder="Your Email"
+                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-400 mb-1"
-                >
+                <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-1">
                   Message
                 </label>
                 <textarea
-                  id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   required
+                  placeholder="Your Message"
+                  className="w-full px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 />
               </div>
+
+              {successMessage && <p className="text-green-500">{successMessage}</p>}
+              {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+
               <motion.button
                 type="submit"
                 className="w-full px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
